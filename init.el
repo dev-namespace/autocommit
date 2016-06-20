@@ -7,7 +7,7 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
 ; list the packages you want
-(setq package-list '(evil auto-complete color-theme))
+(setq package-list '(evil auto-complete color-theme web-mode yasnippet))
 
 ; list the repositories containing them
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
@@ -29,6 +29,9 @@
 (require 'evil)
 (evil-mode 1) 
 
+(require 'yasnippet)
+(yas-global-mode 1)
+
 ;;; auto complete mod
 ;;; should be loaded after yasnippet so that they can work together
 (require 'auto-complete-config)
@@ -39,3 +42,10 @@
 ;;; activate, otherwise, auto-complete will
 (ac-set-trigger-key "TAB")
 (ac-set-trigger-key "<tab>")
+
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
+
+(require 'color-theme)
+(color-theme-initialize)
