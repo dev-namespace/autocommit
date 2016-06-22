@@ -1,4 +1,3 @@
-
 ;; Package stuff
 (require 'package)
 (add-to-list 'package-archives
@@ -7,7 +6,7 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
 ; list the packages you want
-(setq package-list '(evil auto-complete color-theme web-mode yasnippet))
+(setq package-list '(evil auto-complete color-theme web-mode yasnippet tabbar))
 
 ; list the repositories containing them
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
@@ -53,3 +52,33 @@
 (require 'color-theme)
 (color-theme-initialize)
 (color-theme-ld-dark)
+
+(require 'tabbar)
+(tabbar-mode t)
+(setq tabbar-cycle-scope 'tabs)
+(setq tabbar-buffer-groups-function
+	(lambda ()
+	    (let ((dir (expand-file-name default-directory)))
+	(cond ((member (buffer-name) '("*Completions*"
+			"*scratch*"
+			"*Messages*"
+			"*Ediff Registry*"))
+	    (list "#misc"))
+	    ((string-match-p "/.emacs.d/" dir)
+	    (list ".emacs.d"))
+	    (t (list dir))))))
+
+;; ===== Custom minor modes =====
+(defvar custom-keys-minor-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "C-c C-j") 'tabbar-forward)
+    (define-key map (kbd "C-c C-k") 'tabbar-backward)
+    map)
+  "custom-keys-minor-mode keymap.")
+
+(define-minor-mode custom-keys-minor-mode
+  "A minor mode so that my key settings override annoying major modes."
+  :init-value t
+  :lighter " custom-keys")
+
+(custom-keys-minor-mode 1)
