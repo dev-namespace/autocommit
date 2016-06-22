@@ -25,6 +25,9 @@
   (unless (package-installed-p package)
     (package-install package)))
 
+(setq tab-width 4)
+(setq tab-always-indent nil)
+
 ;; ===== Package initializations =====
 (require 'evil)
 (evil-mode 1) 
@@ -49,3 +52,4 @@
 
 (require 'color-theme)
 (color-theme-initialize)
+(color-theme-ld-dark)
