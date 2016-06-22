@@ -69,6 +69,8 @@
 	    (t (list dir))))))
 
 ;; ===== Custom minor modes =====
+(ido-mode t)
+
 (defvar custom-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "C-c C-j") 'tabbar-forward)
