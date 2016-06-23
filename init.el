@@ -6,7 +6,7 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
 ; list the packages you want
-(setq package-list '(evil auto-complete color-theme web-mode yasnippet tabbar))
+(setq package-list '(evil auto-complete color-theme web-mode yasnippet tabbar evil-org))
 
 ; list the repositories containing them
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
@@ -26,6 +26,7 @@
 
 (setq tab-width 4)
 (setq tab-always-indent nil)
+(desktop-save-mode 1)
 
 ;; ===== Package initializations =====
 (require 'evil)
@@ -53,20 +54,20 @@
 (color-theme-initialize)
 (color-theme-ld-dark)
 
-(require 'tabbar)
-(tabbar-mode t)
-(setq tabbar-cycle-scope 'tabs)
-(setq tabbar-buffer-groups-function
-	(lambda ()
-	    (let ((dir (expand-file-name default-directory)))
-	(cond ((member (buffer-name) '("*Completions*"
-			"*scratch*"
-			"*Messages*"
-			"*Ediff Registry*"))
-	    (list "#misc"))
-	    ((string-match-p "/.emacs.d/" dir)
-	    (list ".emacs.d"))
-	    (t (list dir))))))
+;; (require 'tabbar)
+;; (tabbar-mode t)
+;; (setq tabbar-cycle-scope 'tabs)
+;; (setq tabbar-buffer-groups-function
+;; 	(lambda ()
+;; 	    (let ((dir (expand-file-name default-directory)))
+;; 	(cond ((member (buffer-name) '("*Completions*"
+;; 			"*scratch*"
+;; 			"*Messages*"
+;; 			"*Ediff Registry*"))
+;; 	    (list "#misc"))
+;; 	    ((string-match-p "/.emacs.d/" dir)
+;; 	    (list ".emacs.d"))
+;; 	    (t (list dir))))))
 
 ;; ===== Custom minor modes =====
 (ido-mode t)
