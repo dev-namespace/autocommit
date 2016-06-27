@@ -50,7 +50,7 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
-;;; auto complete mod
+;; auto complete mod
 ;;; should be loaded after yasnippet so that they can work together
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
