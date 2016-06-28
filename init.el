@@ -6,7 +6,7 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
 ;; Package auto-install
-(setq package-list '(evil auto-complete color-theme web-mode yasnippet powerline airline-themes projectile bm workgroups))
+(setq package-list '(evil auto-complete color-theme web-mode yasnippet powerline airline-themes projectile bm scss-mode))
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("gnu" . "http://elpa.gnu.org/packages/")))
 
@@ -18,39 +18,21 @@
     (package-install package)))
 
 ;; misc config
+(global-auto-revert-mode t)
 (setq tab-width 4)
 (setq tab-always-indent nil)
 (desktop-save-mode 1)
-(setq desktop-restore-frames t)
 (menu-bar-mode -1)
 
 ;; ===== Package initializations =====
+
 (require 'evil)
 (evil-mode 1) 
-
-(require 'powerline)
-(powerline-center-theme)
-
-(require 'airline-themes)
-(load-theme 'airline-badwolf t)
-
-;; correct chars for the powerline
-(setq airline-utf-glyph-separator-left      #xe0b0
-      airline-utf-glyph-separator-right     #xe0b2
-      airline-utf-glyph-subseparator-left   #xe0b1
-      airline-utf-glyph-subseparator-right  #xe0b3
-      airline-utf-glyph-branch              #xe0a0
-      airline-utf-glyph-readonly            #xe0a2
-      airline-utf-glyph-linenumber          #xe0a1)
 
 (require 'bm)
 (global-set-key (kbd "<C-f8>") 'bm-toggle)
 (global-set-key (kbd "<f8>")   'bm-next)
 (global-set-key (kbd "<S-f8>") 'bm-previous)
-
-(require 'workgroups)
-(workgroups-mode 1)
-(setq wg-prefix-key (kbd "C-c w"))
 
 (require 'yasnippet)
 (yas-global-mode 1)
@@ -70,9 +52,12 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
 
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-ld-dark)
+(autoload 'scss-mode "scss-mode")
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
+
+;(require 'workgroups)
+;(workgroups-mode 1)
+;(setq wg-prefix-key (kbd "C-c w"))
 
 
 ;; (require 'tabbar)
@@ -89,6 +74,31 @@
 ;; 	    ((string-match-p "/.emacs.d/" dir)
 ;; 	    (list ".emacs.d"))
 ;; 	    (t (list dir))))))
+
+(require 'powerline)
+(powerline-center-theme)
+
+(require 'airline-themes)
+(load-theme 'airline-badwolf t)
+
+;; correct chars for the powerline
+(setq airline-utf-glyph-separator-left      #xe0b0
+      airline-utf-glyph-separator-right     #xe0b2
+      airline-utf-glyph-subseparator-left   #xe0b1
+      airline-utf-glyph-subseparator-right  #xe0b3
+      airline-utf-glyph-branch              #xe0a0
+      airline-utf-glyph-readonly            #xe0a2
+      airline-utf-glyph-linenumber          #xe0a1)
+
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-ld-dark)
+
+;; ===== Key bindings =====
+(global-set-key (kbd "C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "C-<down>") 'shrink-window)
+(global-set-key (kbd "C-<up>") 'enlarge-window)
 
 ;; ===== Custom minor modes =====
 (ido-mode t)
