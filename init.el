@@ -6,7 +6,7 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
 ;; Package auto-install
-(setq package-list '(evil auto-complete color-theme web-mode yasnippet powerline airline-themes projectile bm))
+(setq package-list '(evil auto-complete color-theme web-mode yasnippet powerline airline-themes projectile bm workgroups))
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("gnu" . "http://elpa.gnu.org/packages/")))
 
@@ -21,6 +21,7 @@
 (setq tab-width 4)
 (setq tab-always-indent nil)
 (desktop-save-mode 1)
+(setq desktop-restore-frames t)
 (menu-bar-mode -1)
 
 ;; ===== Package initializations =====
@@ -46,6 +47,10 @@
 (global-set-key (kbd "<C-f8>") 'bm-toggle)
 (global-set-key (kbd "<f8>")   'bm-next)
 (global-set-key (kbd "<S-f8>") 'bm-previous)
+
+(require 'workgroups)
+(workgroups-mode 1)
+(setq wg-prefix-key (kbd "C-c w"))
 
 (require 'yasnippet)
 (yas-global-mode 1)
