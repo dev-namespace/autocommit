@@ -6,7 +6,7 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
 ;; Package auto-install
-(setq package-list '(evil auto-complete color-theme web-mode yasnippet powerline airline-themes projectile bm scss-mode))
+(setq package-list '(evil auto-complete color-theme web-mode yasnippet powerline airline-themes projectile bm scss-mode ace-window slime))
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("gnu" . "http://elpa.gnu.org/packages/")))
 
@@ -23,6 +23,8 @@
 (setq tab-always-indent nil)
 (desktop-save-mode 1)
 (menu-bar-mode -1)
+(tool-bar-mode -1)
+(show-paren-mode 1)
 
 ;; ===== Package initializations =====
 
@@ -54,6 +56,11 @@
 
 (autoload 'scss-mode "scss-mode")
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
+
+;; Set your lisp system and, optionally, some contribs
+(setq inferior-lisp-program "clisp")
+(require 'slime)
+(setq slime-contribs '(slime-fancy))
 
 ;(require 'workgroups)
 ;(workgroups-mode 1)
@@ -92,13 +99,15 @@
 
 (require 'color-theme)
 (color-theme-initialize)
-(color-theme-ld-dark)
+(color-theme-calm-forest)
 
 ;; ===== Key bindings =====
 (global-set-key (kbd "C-<left>") 'shrink-window-horizontally)
 (global-set-key (kbd "C-<right>") 'enlarge-window-horizontally)
 (global-set-key (kbd "C-<down>") 'shrink-window)
 (global-set-key (kbd "C-<up>") 'enlarge-window)
+
+(global-set-key (kbd "M-p") 'ace-window)
 
 ;; ===== Custom minor modes =====
 (ido-mode t)
