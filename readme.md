@@ -4,13 +4,14 @@ A simple script that autocommits and pushes all changes to every git repository 
 ## Usage
 Create an ssh key and link it to your Github account.
 
-Create an empty file called __autocommit__ in the .git folder of all the repositories you want to be autocommited.
+Create an empty file called `__autocommit__` in the .git folder of all the repositories you want to be autocommited.
 
 Call the script when you want to autocommit
 ```
 python autocommit -d [root_path]
-
-# push specific branch (-b defaults to master)
+```
+push to an specific branch (-b defaults to master)
+```
 python autocommit -d [root_path] -b [branch_name]
 ```
 
