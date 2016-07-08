@@ -8,8 +8,8 @@ from datetime import datetime
 def searchAndCommit(root_dir, branch='master'):
     for subdir, dirs, files in os.walk(root_dir):
         if '__autocommit__' in files:
-            print ('Trying to commit %s' %(subdir))
             os.chdir(subdir+'/..')
+            print ('Trying to commit %s' %(os.getcwd()))
             os.system("git add -A; git commit -m 'autocommit at %s'; git push origin %s" \
                   % (str(datetime.now()), branch))
     
