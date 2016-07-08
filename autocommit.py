@@ -1,18 +1,17 @@
-""" 
-script that looks for git repositories in a given path - subdirectories included - and 
-performs a commit and a push if there's a file named __autocommit__ in the .git folder
-"""
 import argparse, os
 from datetime import datetime
 
 def searchAndCommit(root_dir, branch='master'):
+    """ 
+    looks for git repositories in root_dir - subdirectories included - and performs a
+    commit and a push if there's a file named __autocommit__ in the .git folder
+    """
     for subdir, dirs, files in os.walk(root_dir):
         if '__autocommit__' in files:
             os.chdir(subdir+'/..')
             print ('Trying to commit %s' %(os.getcwd()))
             os.system("git add -A; git commit -m 'autocommit at %s'; git push origin %s" \
                   % (str(datetime.now()), branch))
-    
 
 def parseArgs():
     argparser = argparse.ArgumentParser()
