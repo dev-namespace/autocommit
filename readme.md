@@ -15,4 +15,4 @@ push to an specific branch (-b defaults to master)
 python autocommit.py -d [root_path] -b [branch_name]
 ```
 
-Or set a [cronjob](http://askubuntu.com/questions/2368/how-do-i-set-up-a-cron-job) to do it for you
+Or preferably set a [cronjob](http://askubuntu.com/questions/2368/how-do-i-set-up-a-cron-job) to do it for you
