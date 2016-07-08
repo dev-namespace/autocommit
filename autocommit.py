@@ -10,7 +10,7 @@ def searchAndCommit(root_dir, branch='master'):
         if '__autocommit__' in files:
             print (subdir, files)
             os.chdir(subdir+'/..')
-            print("git add -A; git commit -m 'autocommit at %s'; git push origin %s" \
+            os.system("git add -A; git commit -m 'autocommit at %s'; git push origin %s" \
                   % (str(datetime.now()), branch))
     
 
