@@ -1,5 +1,5 @@
 # Autocommit
-A simple script that autocommits and pushes all changes to every git repository inside a root path.
+A simple script that autocommits and pushes all changes of git repositories inside a root path.
 
 ## Usage
 Create an ssh key and link it to your Github account.
