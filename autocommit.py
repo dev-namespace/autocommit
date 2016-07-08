@@ -5,12 +5,13 @@ performs a commit and a push if there's a file named __autocommit__ in the .git 
 import argparse, os
 from datetime import datetime
 
-def init(root_dir, branch='master'):
+def searchAndCommit(root_dir, branch='master'):
     for subdir, dirs, files in os.walk(root_dir):
         if '__autocommit__' in files:
             print (subdir, files)
             os.chdir(subdir+'/..')
-            print("git add -A; git commit -m 'autocommit at %s'; git push origin %s" % (str(datetime.now())), branch)
+            print("git add -A; git commit -m 'autocommit at %s'; git push origin %s" \
+                  % (str(datetime.now()), branch))
     
 
 def parseArgs():
@@ -25,4 +26,4 @@ if __name__ == '__main__':
     if not args.d:
         print 'a root directory path is required. Use the -d argument'
     else:
-        init(args.d, args.b or 'master')
+        searchAndCommit(args.d, args.b or 'master')
