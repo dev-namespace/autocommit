@@ -1,5 +1,7 @@
+<<<<<<< HEAD
 ac-comphist.dat
 auto-save-list/*
 .emacs.desktop*
-#init.el#
-#*
+*.pyc
+*~
+*#
