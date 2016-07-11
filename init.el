@@ -6,7 +6,7 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
 ;; Package auto-install
-(setq package-list '(evil auto-complete color-theme web-mode yasnippet powerline airline-themes projectile bm scss-mode ace-window slime))
+(setq package-list '(evil auto-complete color-theme web-mode yasnippet powerline airline-themes projectile bm scss-mode ace-window slime erc haskell-mode))
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("gnu" . "http://elpa.gnu.org/packages/")))
 
@@ -19,6 +19,7 @@
 
 ;; misc config
 (global-auto-revert-mode t)
+(xterm-mouse-mode t)
 (setq tab-width 4)
 (setq tab-always-indent nil)
 (desktop-save-mode 1)
@@ -27,6 +28,8 @@
 (show-paren-mode 1)
 
 ;; ===== Package initializations =====
+(require 'erc)
+(setq erc-hide-list '("JOIN" "PART" "QUIT"))
 
 (require 'evil)
 (evil-mode 1) 
