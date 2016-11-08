@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: window_width 
-# key: ww
-# --
-document.documentElement.clientWidth
