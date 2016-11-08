@@ -6,7 +6,7 @@ Create an ssh key and link it to your Github account.
 
 Create an empty file called `__autocommit__` in the .git folder of all the repositories you want to be autocommited.
 
-Call the script when you want to autocommit. It scans all the tree of directories under a given root path, so the path of your workspace directory should be enough to commit most of your repos.
+Call the script when you want to autocommit. It scans all the tree of directories under a given root path, so the path of your workspace directory should be enough to commit all of your repos.
 ```
 python autocommit.py -d [root_path]
 ```
